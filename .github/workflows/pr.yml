@@ -1,7 +1,7 @@
-name: CI
+name: PR
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 env:
@@ -20,4 +20,4 @@ jobs:
         uses: actions/checkout@v2
       - name: test
         run: |
-          echo '默认push'
+          echo 'pr'
