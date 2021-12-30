@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+env:
+  REPOSITORY_PATH: https://${{secrets.ACCESS_TOKEN}}@github.com/
+  # GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: init
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@gmail.com"
+      - name: pull-code
+        uses: actions/checkout@v2
+      - name: test
+        run: |
+          echo 'hello'
